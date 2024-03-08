@@ -1,19 +1,35 @@
 package main
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestHello(t *testing.T) {
 
 	t.Run("Paramter Testing", func(t *testing.T) {
-		got := Hello("Ankit")
+		got := Hello("Ankit", "")
 		want := "Hello Ankit"
 
 		assertCorrectMessage(t, got, want)
 	})
 
 	t.Run("Empty Parameter", func(t *testing.T) {
-		got := Hello("")
+		got := Hello("", "")
 		want := "Hello World"
+
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("Greeting in Spanish", func(t *testing.T) {
+		got := Hello("Ankit", "Spanish")
+		want := "Hola Ankit"
+
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("Greeting in French", func(t *testing.T) {
+		got := Hello("Ankit", "French")
+		want := "Bonjor Ankit"
 
 		assertCorrectMessage(t, got, want)
 	})
